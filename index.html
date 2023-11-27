@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>API Weather App</title>
-  <script src="./assets/script.js"></script>
+  <script src="./assets/script.js" defer></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
@@ -24,22 +24,22 @@
       </div>
       <!-- Current days weather forecast card -->
       <div class="col col-md-8 p-2">
-        <div class="card bg-success text-white">
+        <div class="card  p-2 bg-success text-white">
           <div class="card-body" id="main-card">
-            <h3 class="card-title" id="main-card-city"></h3>
-            <h5 class="card-title" id="main-card-date">Card title</h5>
-            <p class="card-text" id="main-card-icon"></p>
-            <p class="card-text" id="main-card-temp">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p class="card-text" id="main-card-wind"></p>
-            <p class="card-text" id="main-card-humid"></p>
+            <h3 class="card-title" id="main-card-city">City</h3>
+            <h5 class="card-title" id="main-card-date">Date</h5>
+            <p class="card-text" id="main-card-icon">*</p>
+            <p class="card-text" id="main-card-temp">Temp</p>
+            <p class="card-text" id="main-card-wind">Wind Speed</p>
+            <p class="card-text" id="main-card-humid">Humidity</p>
           </div>
         </div>
       </div>
     </div>
     <!-- City search history colomn -->
     <div class="row">
-      <div class="col col-md-4 mt-3 p-2">
-        <div class="d-grid gap-2 col-10 mx-auto">
+      <div class="col col-md-4">
+        <div class="d-grid gap-2 col-10 mx-auto mt-3 p-2">
           <button class="btn btn-secondary" type="submit">History</button>
         </div>
       </div>
@@ -47,52 +47,51 @@
       <div class="col col-md-8 mt-3 p-2 d-flex">
         <div class="card bg-primary text-white" style="width: 12rem;">
           <div class="card-body" id="card1">
-            <h5 class="card-title" id="card1-date">Card title</h5>
-            <p class="card-text" id="card1-icon"></p>
-            <p class="card-text" id="card1-temp">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p class="card-text" id="card1-wind"></p>
-            <p class="card-text" id="card1-humid"></p>
+            <h5 class="card-title" id="card1-date">Date</h5>
+            <p class="card-text" id="card1-icon">*</p>
+            <p class="card-text" id="card1-temp">Temp</p>
+            <p class="card-text" id="card1-wind">Wind Speed</p>
+            <p class="card-text" id="card1-humid">Humidity</p>
           </div>
         </div>
         <div class="card bg-primary text-white" style="width: 12rem;">
           <div class="card-body" id="card2">
-            <h5 class="card-title" id="card2-date">Card title</h5>
-            <p class="card-text" id="card2-icon"></p>
-            <p class="card-text" id="card2-temp">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p class="card-text" id="card2-wind"></p>
-            <p class="card-text" id="card2-humid"></p>
+            <h5 class="card-title" id="card2-date">Date</h5>
+            <p class="card-text" id="card2-icon">*</p>
+            <p class="card-text" id="card2-temp">Temp</p>
+            <p class="card-text" id="card2-wind">Wind Speed</p>
+            <p class="card-text" id="card2-humid">Humidity</p>
           </div>
         </div>
         <div class="card bg-primary text-white" style="width: 12rem;">
           <div class="card-body" id="card3">
-            <h5 class="card-title" id="card3-date">Card title</h5>
-            <p class="card-text" id="card3-icon"></p>
-            <p class="card-text" id="card3-temp">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p class="card-text" id="card3-wind"></p>
-            <p class="card-text" id="card3-humid"></p>
+            <h5 class="card-title" id="card3-date">Date</h5>
+            <p class="card-text" id="card3-icon">*</p>
+            <p class="card-text" id="card3-temp">Temp</p>
+            <p class="card-text" id="card3-wind">Wind Speed</p>
+            <p class="card-text" id="card3-humid">Humidity</p>
           </div>
         </div>
         <div class="card bg-primary text-white" style="width: 12rem;">
           <div class="card-body" id="card4">
-            <h5 class="card-title" id="card4-date">Card title</h5>
-            <p class="card-text" id="card4-icon"></p>
-            <p class="card-text" id="card4-temp">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p class="card-text" id="card4-wind"></p>
-            <p class="card-text" id="card4-humid"></p>
+            <h5 class="card-title" id="card4-date">Date</h5>
+            <p class="card-text" id="card4-icon">*</p>
+            <p class="card-text" id="card4-temp">Temp</p>
+            <p class="card-text" id="card4-wind">Wind Speed</p>
+            <p class="card-text" id="card4-humid">Humidity</p>
           </div>
         </div>
         <div class="card bg-primary text-white" style="width: 12rem;">
           <div class="card-body" id="card5">
-            <h5 class="card-title" id="card5-date">Card title</h5>
-            <p class="card-text" id="card5-icon"></p>
-            <p class="card-text" id="card5-temp">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p class="card-text" id="card5-wind"></p>
-            <p class="card-text" id="card5-humid"></p>
+            <h5 class="card-title" id="card5-date">Date</h5>
+            <p class="card-text" id="card5-icon">*</p>
+            <p class="card-text" id="card5-temp">Temp</p>
+            <p class="card-text" id="card5-wind">Wind Speed</p>
+            <p class="card-text" id="card5-humid">Humidity</p>
           </div>
         </div>
       </div>
     </div>
-
   </main>
 </body>
 </html>
