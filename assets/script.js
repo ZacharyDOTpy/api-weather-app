@@ -1,4 +1,4 @@
-var date = dayjs().format();
+// var date = dayjs().format();
 
 var currentCity = document.getElementById('main-card-city');
 var currentDate = document.getElementById('main-card-date');
@@ -7,27 +7,43 @@ var currentWind = document.getElementById('main-card-wind');
 var currentIcon = document.getElementById('main-card-icon');
 var currentHumid = document.getElementById('main-card-humid');
 
+var searchBtn = document.getElementById('search-btn');
+var cityForcast;
 
-// Fetch request for city data
-function getCityGeoData(city) {
-  fetch('http://api.openweathermap.org/geo/1.0/direct?appid=e869921654196b8684a99705332290bf&limit=1&q=' + city)
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
-    console.log(data);
-    
-// Variables for city data
-    var location = data[0].name;
-    console.log('City: ' + location)
-    var locationLat = data[0].lat;
-    console.log('Latitude: ' + locationLat)
-    var locationLon = data[0].lon;
-    console.log('Longitude: ' + locationLon)
+// Event listener for search button
+searchBtn.addEventListener('click', userInput);
 
-    getGeoWeather(locationLat, locationLon)
-    getGeoForcast(locationLat, locationLon)
-  })
+// Function for user form input
+function userInput(event) {
+  event.preventDefault()
+  var citySearch = document.getElementById('city-search').value;
+  
+  lastCity = citySearch;
+  cityForcast = citySearch;
+
+  // Fetch request for city data
+  function getCityGeoData(city) {
+    fetch('http://api.openweathermap.org/geo/1.0/direct?appid=e869921654196b8684a99705332290bf&limit=1&q=' + city)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      console.log(data);
+      
+      // Variables for city data
+      var location = data[0].name;
+      console.log('City: ' + location)
+      var locationLat = data[0].lat;
+      console.log('Lat: ' + locationLat)
+      var locationLon = data[0].lon;
+      console.log('Lon: ' + locationLon)
+      
+      getGeoWeather(locationLat, locationLon)
+      getGeoForcast(locationLat, locationLon)
+    })
+  };
+    getCityGeoData();
+    searchHistory();
 };
 
 // Fetch request for current weather forecast
@@ -155,4 +171,13 @@ function getGeoForcast(lat, lon) {
       document.getElementById('card1-wind').textContent = 'Wind: ' + windDay5;
       document.getElementById('card1-humid').textContent = 'Humidity: ' + humidDay5;
     })
-}
+};
+
+var lastCity = "";
+var historyList = { city: []};
+
+// Function to save search to local storage
+function searchHistory() {
+  historyList.city.push(lastCity);
+  localStorage.setItem('history', JSON.stringify(historyList));
+};
