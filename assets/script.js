@@ -17,7 +17,16 @@ function getCityGeoData(city) {
   .then(function(data) {
     console.log(data);
     
-    
+// Variables for city data
+    var location = data[0].name;
+    console.log('City: ' + location)
+    var locationLat = data[0].lat;
+    console.log('Latitude: ' + locationLat)
+    var locationLon = data[0].lon;
+    console.log('Longitude: ' + locationLon)
+
+    getGeoWeather(locationLat, locationLon)
+    getGeoForcast(locationLat, locationLon)
   })
 };
 
@@ -53,7 +62,7 @@ function getGeoWeather(lat, lon) {
     })
 };
 // Fetch request for weeks weather forecast
-function getWeekForcast(lat, lon) {
+function getGeoForcast(lat, lon) {
   fetch('http://api.openweathermap.org/data/2.5/forecast?appid=e869921654196b8684a99705332290bf&lat=' + lat + '&lon=' + lon + '&units=imperial')
     .then(function(response) {
       return response.json();
