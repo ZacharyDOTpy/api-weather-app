@@ -23,10 +23,8 @@ function userInput(event) {
 
   // Fetch request for city data
   function getCityGeoData(city) {
-    fetch(
-      "https://api.openweathermap.org/geo/1.0/direct?appid=e869921654196b8684a99705332290bf&limit=1&q=" +
-        city
-    )
+    fetch("https://api.openweathermap.org/geo/1.0/direct?appid=e869921654196b8684a99705332290bf&limit=1&q=" + city)
+      
       .then(function (response) {
         return response.json();
       })
@@ -51,13 +49,8 @@ function userInput(event) {
 
 // Fetch request for current weather forecast
 function getGeoWeather(lat, lon) {
-  fetch(
-    "https://api.openweathermap.org/data/2.5/weather?appid=e869921654196b8684a99705332290bf&lat=" +
-      lat +
-      "&lon=" +
-      lon +
-      "&units=imperial"
-  )
+  fetch("https://api.openweathermap.org/data/2.5/weather?appid=e869921654196b8684a99705332290bf&lat=" + lat + "&lon=" + lon + "&units=imperial")
+    
     .then(function (response) {
       return response.json();
     })
@@ -91,13 +84,8 @@ function getGeoWeather(lat, lon) {
 }
 // Fetch request for weeks weather forecast
 function getGeoForcast(lat, lon) {
-  fetch(
-    "https://api.openweathermap.org/data/2.5/forecast?appid=e869921654196b8684a99705332290bf&lat=" +
-      lat +
-      "&lon=" +
-      lon +
-      "&units=imperial"
-  )
+  fetch("https://api.openweathermap.org/data/2.5/forecast?appid=e869921654196b8684a99705332290bf&lat=" + lat + "&lon=" + lon + "&units=imperial")
+    
     .then(function (response) {
       return response.json();
     })
@@ -121,10 +109,7 @@ function getGeoForcast(lat, lon) {
         .format("M/D/YYYY");
       document
         .getElementById("card1-icon")
-        .setAttribute(
-          "src",
-          "http://openweathermap.org/img/w/" + iconDay1 + ".png"
-        );
+        .setAttribute("src", "http://openweathermap.org/img/w/" + iconDay1 + ".png");
       document.getElementById("card1-temp").textContent = "Temp: " + tempDay1;
       document.getElementById("card1-wind").textContent = "Wind: " + windDay1;
       document.getElementById("card1-humid").textContent =
@@ -147,10 +132,7 @@ function getGeoForcast(lat, lon) {
         .format("M/D/YYYY");
       document
         .getElementById("card1-icon")
-        .setAttribute(
-          "src",
-          "http://openweathermap.org/img/w/" + iconDay2 + ".png"
-        );
+        .setAttribute("src", "http://openweathermap.org/img/w/" + iconDay2 + ".png");
       document.getElementById("card1-temp").textContent = "Temp: " + tempDay2;
       document.getElementById("card1-wind").textContent = "Wind: " + windDay2;
       document.getElementById("card1-humid").textContent =
@@ -173,10 +155,7 @@ function getGeoForcast(lat, lon) {
         .format("M/D/YYYY");
       document
         .getElementById("card1-icon")
-        .setAttribute(
-          "src",
-          "http://openweathermap.org/img/w/" + iconDay3 + ".png"
-        );
+        .setAttribute("src", "http://openweathermap.org/img/w/" + iconDay3 + ".png");
       document.getElementById("card1-temp").textContent = "Temp: " + tempDay3;
       document.getElementById("card1-wind").textContent = "Wind: " + windDay3;
       document.getElementById("card1-humid").textContent =
@@ -199,10 +178,7 @@ function getGeoForcast(lat, lon) {
         .format("M/D/YYYY");
       document
         .getElementById("card1-icon")
-        .setAttribute(
-          "src",
-          "http://openweathermap.org/img/w/" + iconDay4 + ".png"
-        );
+        .setAttribute("src", "http://openweathermap.org/img/w/" + iconDay4 + ".png");
       document.getElementById("card1-temp").textContent = "Temp: " + tempDay4;
       document.getElementById("card1-wind").textContent = "Wind: " + windDay4;
       document.getElementById("card1-humid").textContent =
@@ -225,10 +201,7 @@ function getGeoForcast(lat, lon) {
         .format("M/D/YYYY");
       document
         .getElementById("card1-icon")
-        .setAttribute(
-          "src",
-          "http://openweathermap.org/img/w/" + iconDay5 + ".png"
-        );
+        .setAttribute("src", "http://openweathermap.org/img/w/" + iconDay5 + ".png");
       document.getElementById("card1-temp").textContent = "Temp: " + tempDay5;
       document.getElementById("card1-wind").textContent = "Wind: " + windDay5;
       document.getElementById("card1-humid").textContent =
@@ -267,8 +240,7 @@ function loadHistory() {
   for (i = 0; i < cityHistory.length; i++) {
     if (
       cityHistory[i] == "" ||
-      cityHistory[i] === undefined ||
-      cityHistory[i] == ""
+      cityHistory[i] === undefined
     ) {
     } else {
       organizeHistory = cityHistory[i];
@@ -301,32 +273,32 @@ function loadHistory() {
 
 loadHistory();
 
-var historyButtons = document.querySelector('.history-button');
+var historyButtons = document.querySelector(".history-button");
 historyButtons.forEach(function (currentButton) {
-  currentButton.addEventListener('click', buttonSearch)
-})
+  currentButton.addEventListener("click", buttonSearch);
+});
 
 // Function for weather data on history buttons
 function buttonSearch() {
   var cityButton;
 
-  cityButton = this.textContent
-  console.log(cityButton)
+  cityButton = this.textContent;
+  console.log(cityButton);
 
-  fetch('https://api.openweathermap.org/geo/1.0/direct?q=' + cityButton + '&limit=1&appid=e869921654196b8684a99705332290bf')
+  fetch("https://api.openweathermap.org/geo/1.0/direct?q=" + cityButton + "&limit=1&appid=e869921654196b8684a99705332290bf")
+    
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-
       var location = data[0].name;
-      console.log('City: ' + location)
+      console.log("City: " + location);
       var locationLat = data[0].lat;
-      console.log('lat: ' + locationLat)
+      console.log("lat: " + locationLat);
       var locationLon = data[0].lon;
-      console.log('Lon: ' + locationLon)
+      console.log("Lon: " + locationLon);
 
       getGeoWeather(locationLat, locationLon);
       getGeoForcast(locationLat, locationLon);
-    })
+    });
 }
