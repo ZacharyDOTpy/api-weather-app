@@ -43,17 +43,17 @@ function getCurrentWeather(lat, lon) {
       weatherEl.appendChild(h4El);
 
       const tempEl = document.createElement('p');
-      tempEl.textContent = data.main.temp;
+      tempEl.textContent = 'Temperature: ' + data.main.temp;
       tempEl.className = 'card-text';
       weatherEl.appendChild(tempEl);
 
       const humidEl = document.createElement('p');
-      humidEl.textContent = data.main.humidity;
+      humidEl.textContent = 'Humidity: ' + data.main.humidity;
       humidEl.className = 'card-text';
       weatherEl.appendChild(humidEl);
 
       const windEl = document.createElement('p');
-      windEl.textContent = data.wind.speed;
+      windEl.textContent = 'Wind Speed: ' + data.wind.speed;
       windEl.className = 'card-text';
       weatherEl.appendChild(windEl);
     });
@@ -88,17 +88,17 @@ function getFiveDayForecast(lat, lon) {
         cardBody.appendChild(h4El);
 
         const tempEl = document.createElement('p');
-        tempEl.textContent = weather.main.temp;
+        tempEl.textContent = 'Temperature: ' + weather.main.temp;
         tempEl.className = 'card-text';
         cardBody.appendChild(tempEl);
 
         const humidEl = document.createElement('p');
-        humidEl.textContent = weather.main.humidity;
+        humidEl.textContent = 'Humidity: ' + weather.main.humidity;
         humidEl.className = 'card-text';
         cardBody.appendChild(humidEl);
 
         const windEl = document.createElement('p');
-        windEl.textContent = weather.wind.speed;
+        windEl.textContent = 'Wind Speed: ' + weather.wind.speed;
         windEl.className = 'card-text';
         cardBody.appendChild(windEl);
       }
