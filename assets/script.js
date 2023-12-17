@@ -36,11 +36,17 @@ function getCurrentWeather(lat, lon) {
     })
     .then(function(data) {
       weatherEl.innerHTML = null;
+
+      const weatherIcon = data.weather[0].icon;
       
       const h4El = document.createElement('h4');
       h4El.textContent = data.name;
       h4El.className = 'card-title';
       weatherEl.appendChild(h4El);
+
+      const iconEl = document.createElement('img');
+      iconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + weatherIcon + '.png');
+      weatherEl.appendChild(iconEl);
 
       const tempEl = document.createElement('p');
       tempEl.textContent = 'Temperature: ' + data.main.temp;
@@ -69,6 +75,7 @@ function getFiveDayForecast(lat, lon) {
 
       for (let i = 4; i < data.list.length; i = i + 8) {
         const weather = data.list[i];
+        const weatherIcon = data.list[i].weather[0].icon;
 
         const colEl = document.createElement('div');
         colEl.className = 'col-12 col-xl';
@@ -87,6 +94,10 @@ function getFiveDayForecast(lat, lon) {
         h4El.className = 'card-title';
         cardBody.appendChild(h4El);
 
+        const iconEl = document.createElement('img');
+        iconEl.setAttribute('src', 'http://openweathermap.org/img/w/' + weatherIcon + '.png');
+        cardBody.appendChild(iconEl);
+
         const tempEl = document.createElement('p');
         tempEl.textContent = 'Temperature: ' + weather.main.temp;
         tempEl.className = 'card-text';
@@ -104,9 +115,6 @@ function getFiveDayForecast(lat, lon) {
       }
     });
 }
-
-getCurrentWeather();
-getFiveDayForecast();
 
 searchForm.addEventListener('submit', function(event) {
   event.preventDefault();
