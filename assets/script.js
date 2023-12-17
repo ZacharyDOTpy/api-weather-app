@@ -56,11 +56,6 @@ function getCurrentWeather(lat, lon) {
       windEl.textContent = data.wind.speed;
       windEl.className = 'card-text';
       weatherEl.appendChild(windEl);
-
-      console.log(data.name);
-      console.log(data.main.temp);
-      console.log(data.main.humidity);
-      console.log(data.wind.speed);
     });
 }
 
@@ -72,7 +67,7 @@ function getFiveDayForecast(lat, lon) {
     .then(function(data) {
       forecastContainer.innerHTML = null;
 
-      for (let i = 3; i < data.list.length; i = i + 8) {
+      for (let i = 4; i < data.list.length; i = i + 8) {
         const weather = data.list[i];
 
         const colEl = document.createElement('div');
