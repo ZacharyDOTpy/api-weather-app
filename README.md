@@ -12,4 +12,4 @@ The user is able to enter a city into the search form and will be shown the curr
 ![Screenshot of Weather Dashboard Webpage](./screenshots/api-weather-app.png)
 
 ## Link
-[Link to deployed site](https://zacharydotpy.github.io/)
+[Link to deployed site](https://zacharydotpy.github.io/api-weather-app/)

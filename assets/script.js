@@ -1,6 +1,6 @@
 // housekeeping
 const API_KEY = "e869921654196b8684a99705332290bf";
-const BASE_PATH = "http://api.openweathermap.org";
+const BASE_PATH = "https://api.openweathermap.org";
 const GEO_PATH = "/geo/1.0/direct";
 const WEATHER_PATH = "/data/2.5/weather";
 const FORECAST_PATH = "/data/2.5/forecast";
