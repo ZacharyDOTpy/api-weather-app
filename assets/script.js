@@ -31,9 +31,7 @@ function getGeoCoding(city) {
 
 // current weather fetch request
 function getCurrentWeather(lat, lon) {
-  fetch(
-    `${BASE_PATH}${WEATHER_PATH}?appid=${API_KEY}&lat=${lat}&lon=${lon}&units=imperial`
-  )
+  fetch(`${BASE_PATH}${WEATHER_PATH}?appid=${API_KEY}&lat=${lat}&lon=${lon}&units=imperial`)
     .then(function (response) {
       return response.json();
     })
@@ -73,9 +71,7 @@ function getCurrentWeather(lat, lon) {
 
 // five day forecast fetch request
 function getFiveDayForecast(lat, lon) {
-  fetch(
-    `${BASE_PATH}${FORECAST_PATH}?appid=${API_KEY}&lat=${lat}&lon=${lon}&units=imperial`
-  )
+  fetch(`${BASE_PATH}${FORECAST_PATH}?appid=${API_KEY}&lat=${lat}&lon=${lon}&units=imperial`)
     .then(function (response) {
       return response.json();
     })
