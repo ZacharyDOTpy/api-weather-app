@@ -8,8 +8,10 @@ const FORECAST_PATH = "/data/2.5/forecast";
 const searchForm = document.querySelector("#city-search");
 const inputEl = document.querySelector("#q");
 const weatherEl = document.querySelector("#current-weather");
-const cityContainer = document.querySelector("#cities");
+const historyContainer = document.querySelector("#search-history");
 const forecastContainer = document.querySelector("#weather-forecast");
+
+var searchHistory = [];
 
 // geo coding fetch request
 function getGeoCoding(city) {
@@ -23,12 +25,7 @@ function getGeoCoding(city) {
 
       getCurrentWeather(lat, lon);
       getFiveDayForecast(lat, lon);
-
-// history buttons creation
-      const cityButton = document.createElement("button");
-      cityButton.textContent = city;
-      cityButton.className = "btn btn-lg btn-secondary mb-3 w-100";
-      cityContainer.appendChild(cityButton);
+      addHistory(city);
     });
 }
 
@@ -58,17 +55,17 @@ function getCurrentWeather(lat, lon) {
       weatherEl.appendChild(iconEl);
 
       const tempEl = document.createElement("p");
-      tempEl.textContent = "Temperature: " + data.main.temp;
+      tempEl.textContent = "Temperature: " + data.main.temp + "F";
       tempEl.className = "card-text";
       weatherEl.appendChild(tempEl);
 
       const humidEl = document.createElement("p");
-      humidEl.textContent = "Humidity: " + data.main.humidity;
+      humidEl.textContent = "Humidity: " + data.main.humidity + "%";
       humidEl.className = "card-text";
       weatherEl.appendChild(humidEl);
 
       const windEl = document.createElement("p");
-      windEl.textContent = "Wind Speed: " + data.wind.speed;
+      windEl.textContent = "Wind Speed: " + data.wind.speed + "MPH";
       windEl.className = "card-text";
       weatherEl.appendChild(windEl);
     });
@@ -115,17 +112,17 @@ function getFiveDayForecast(lat, lon) {
         cardBody.appendChild(iconEl);
 
         const tempEl = document.createElement("p");
-        tempEl.textContent = "Temperature: " + weather.main.temp;
+        tempEl.textContent = "Temperature: " + weather.main.temp + "F";
         tempEl.className = "card-text";
         cardBody.appendChild(tempEl);
 
         const humidEl = document.createElement("p");
-        humidEl.textContent = "Humidity: " + weather.main.humidity;
+        humidEl.textContent = "Humidity: " + weather.main.humidity + "%";
         humidEl.className = "card-text";
         cardBody.appendChild(humidEl);
 
         const windEl = document.createElement("p");
-        windEl.textContent = "Wind Speed: " + weather.wind.speed;
+        windEl.textContent = "Wind Speed: " + weather.wind.speed + "MPH";
         windEl.className = "card-text";
         cardBody.appendChild(windEl);
       }
@@ -137,3 +134,42 @@ searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
   getGeoCoding(inputEl.value.trim());
 });
+
+// local storage setItem function
+function addHistory(query) {
+  if (searchHistory.includes(query)) {
+    searchHistory.splice(searchHistory.indexOf(query), 1);
+  }
+  searchHistory.push(query);
+
+  if (searchHistory.length > 8) {
+    searchHistory.splice(0, 1);
+  }
+  localStorage.setItem("search-history", JSON.stringify(searchHistory));
+  displayHistory();
+}
+
+// hitory button display function
+function displayHistory() {
+  historyContainer.innerHTML = null;
+  
+  for (var query of searchHistory) {
+    var historyButton = document.createElement("button");
+    historyButton.className = "history-button btn btn-secondary mb-3 w-100";
+    historyButton.textContent = query;
+    historyButton.addEventListener("click", function () {
+      getGeoCoding(this.textContent);
+    });
+    historyContainer.prepend(historyButton);
+  }
+}
+
+// display history on load function
+function init() {
+  searchHistory = JSON.parse(localStorage.getItem("search-history"))
+  if (searchHistory === null) searchHistory = []
+  console.log(searchHistory);
+  displaySearchHistory();
+}
+
+init();
