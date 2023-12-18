@@ -88,7 +88,7 @@ function getFiveDayForecast(lat, lon) {
         forecastContainer.append(colEl);
 
         const cardEl = document.createElement("div");
-        cardEl.className = "card m-3 p-3";
+        cardEl.className = "card m-3 p-3 bg-primary text-light";
         colEl.append(cardEl);
 
         const cardBody = document.createElement("div");
@@ -96,7 +96,7 @@ function getFiveDayForecast(lat, lon) {
         cardEl.append(cardBody);
 
         const h4El = document.createElement("h4");
-        h4El.textContent = weather.dt_txt;
+        h4El.textContent = dayjs(weather.dt_txt).format('MM/DD/YYYY');
         h4El.className = "card-title";
         cardBody.appendChild(h4El);
 
