@@ -165,7 +165,7 @@ function init() {
   searchHistory = JSON.parse(localStorage.getItem("search-history"))
   if (searchHistory === null) searchHistory = []
   console.log(searchHistory);
-  displaySearchHistory();
+  displayHistory();
 }
 
 init();
