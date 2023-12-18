@@ -2,7 +2,7 @@
 
 ## Description
 
-In this challenge I used fetch requests to gather data from the Open Weather Map API. Once the data is collected I created cards in my JavaScript and appended the data to the cards to be displayed to the user. The users inputs in the search form will be saved to local storage and a search history will be created via buttons. The buttons also have funtionality so that when they are clicked the corresponding city will be searched.
+In this challenge I used fetch requests to gather data from the Open Weather Map API. Once the data is collected I created cards in my JavaScript and appended the data to the cards to be displayed to the user. The users inputs in the search form will be saved to local storage and a search history will be created via buttons. The buttons also have functionality so that when they are clicked the corresponding city will be searched.
 
 ## Usage
 
