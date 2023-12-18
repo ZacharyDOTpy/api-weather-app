@@ -9,7 +9,7 @@ In this challenge I used fetch requests to gather data from the Open Weather Map
 The user is able to enter a city into the search form and will be shown the current days weather data as well as the following five day forcast. The user can then use the search history buttons to look up preciously searched cities.
 
 ## Screenshot
-![Screenshot of Weather Dashboard Webpage](./screenshots/api-weather-app.png)
+![Screenshot of Weather Dashboard Webpage](./screenshots/api-weather-dashboard.png)
 
 ## Link
 [Link to deployed site](https://zacharydotpy.github.io/api-weather-app/)
