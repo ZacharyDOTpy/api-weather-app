@@ -53,19 +53,19 @@ function getCurrentWeather(lat, lon) {
       weatherEl.appendChild(iconEl);
 
       const tempEl = document.createElement("p");
-      tempEl.textContent = "Temperature: " + data.main.temp + "F";
+      tempEl.textContent = "Temp: " + data.main.temp + " F";
       tempEl.className = "card-text";
       weatherEl.appendChild(tempEl);
 
-      const humidEl = document.createElement("p");
-      humidEl.textContent = "Humidity: " + data.main.humidity + "%";
-      humidEl.className = "card-text";
-      weatherEl.appendChild(humidEl);
-
       const windEl = document.createElement("p");
-      windEl.textContent = "Wind Speed: " + data.wind.speed + "MPH";
+      windEl.textContent = "Wind: " + data.wind.speed + " MPH";
       windEl.className = "card-text";
       weatherEl.appendChild(windEl);
+      
+      const humidEl = document.createElement("p");
+      humidEl.textContent = "Humidity: " + data.main.humidity + " %";
+      humidEl.className = "card-text";
+      weatherEl.appendChild(humidEl);
     });
 }
 
@@ -108,19 +108,19 @@ function getFiveDayForecast(lat, lon) {
         cardBody.appendChild(iconEl);
 
         const tempEl = document.createElement("p");
-        tempEl.textContent = "Temperature: " + weather.main.temp + "F";
+        tempEl.textContent = "Temp: " + weather.main.temp + " F";
         tempEl.className = "card-text";
         cardBody.appendChild(tempEl);
 
-        const humidEl = document.createElement("p");
-        humidEl.textContent = "Humidity: " + weather.main.humidity + "%";
-        humidEl.className = "card-text";
-        cardBody.appendChild(humidEl);
-
         const windEl = document.createElement("p");
-        windEl.textContent = "Wind Speed: " + weather.wind.speed + "MPH";
+        windEl.textContent = "Wind: " + weather.wind.speed + " MPH";
         windEl.className = "card-text";
         cardBody.appendChild(windEl);
+        
+        const humidEl = document.createElement("p");
+        humidEl.textContent = "Humidity: " + weather.main.humidity + " %";
+        humidEl.className = "card-text";
+        cardBody.appendChild(humidEl);
       }
     });
 }
